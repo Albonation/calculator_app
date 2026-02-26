@@ -1,5 +1,7 @@
+//main app widget that manages theme state and provides it to the rest of the app
+
 import 'package:flutter/material.dart';
-import '../screens/calc_main_screen.dart';
+import 'screens/calc_main_screen.dart';
 
 class CalcApp extends StatefulWidget {
   const CalcApp({super.key});
@@ -9,24 +11,28 @@ class CalcApp extends StatefulWidget {
 }
 
 class _CalcAppState extends State<CalcApp> {
+  //track theme state, default to dark mode
   bool _isDark = true;
 
+  //toggle theme mode and rebuild app
   void _toggleTheme() => setState(() => _isDark = !_isDark);
 
   @override
   Widget build(BuildContext context) {
+    //define light theme using Material 3 color scheme
     final lightTheme = ThemeData(
       brightness: Brightness.light,
-      scaffoldBackgroundColor: Colors.grey.shade100,
+      scaffoldBackgroundColor: Colors.grey.shade300,
       colorScheme: ColorScheme.light(
         primary: Colors.blue,
-        onPrimary: Colors.white,
+        onPrimary: Colors.black,
         surface: Colors.grey.shade200,
         onSurface: Colors.black,
       ),
       useMaterial3: true,
     );
 
+    //define dark theme using Material 3 color scheme
     final darkTheme = ThemeData(
       brightness: Brightness.dark,
       scaffoldBackgroundColor: Colors.blueGrey.shade900,
@@ -39,6 +45,7 @@ class _CalcAppState extends State<CalcApp> {
       useMaterial3: true,
     );
 
+    //return MaterialApp with theme and home screen
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Calculator',
