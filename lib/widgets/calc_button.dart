@@ -23,17 +23,19 @@ class _CalcButtonState extends State<CalcButton> {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme
+    final scheme = Theme
         .of(context)
-        .brightness == Brightness.dark;
+        .colorScheme;
 
-    final backgroundColor = widget.isOperator
-        ? (isDarkMode ? Colors.blue : Colors.blue)
-        : (isDarkMode ? Colors.grey : Colors.grey);
+    final baseBackground = widget.isOperator
+        ? scheme.primary
+        : scheme.surface;
 
-    final foregroundColor = widget.isOperator
-        ? Colors.white
-        : (isDarkMode ? Colors.white : Colors.black);
+    final baseForeground = widget.isOperator
+        ? scheme.onPrimary
+        : scheme.onSurface;
+
+    final pressedBackground = baseBackground.withValues(alpha: 0.75);
 
     return AnimatedScale(
       scale: _isPressed ? 0.95 : 1.0,
@@ -46,17 +48,18 @@ class _CalcButtonState extends State<CalcButton> {
           onTapDown: (_) => setState(() => _isPressed = true),
           onTapUp: (_) => setState(() => _isPressed = false),
           onTapCancel: () => setState(() => _isPressed = false),
-          child: Ink(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 100),
             height: 62,
             width: widget.isWide ? 140 : 62,
             decoration: BoxDecoration(
-              color: backgroundColor,
+              color: _isPressed ? pressedBackground : baseBackground,
               borderRadius: BorderRadius.circular(18.0),
               boxShadow: [
                 BoxShadow(
-                  blurRadius: 14,
-                  offset: const Offset(0, 6),
-                  color: Colors.black.withValues(alpha: 0.1),
+                  blurRadius: _isPressed ? 6 : 14,
+                  offset: _isPressed ? const Offset(0, 3) : const Offset(0, 6),
+                  color: Colors.black.withValues(alpha: 0.12),
                 ),
               ],
             ),
@@ -66,7 +69,7 @@ class _CalcButtonState extends State<CalcButton> {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: foregroundColor,
+                  color: baseForeground,
                 ),
               ),
             ),

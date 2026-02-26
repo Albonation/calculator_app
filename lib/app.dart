@@ -17,13 +17,25 @@ class _CalcAppState extends State<CalcApp> {
   Widget build(BuildContext context) {
     final lightTheme = ThemeData(
       brightness: Brightness.light,
-      scaffoldBackgroundColor: const Color(0xFFF3F6FB),
+      scaffoldBackgroundColor: Colors.grey.shade100,
+      colorScheme: ColorScheme.light(
+        primary: Colors.blue,
+        onPrimary: Colors.white,
+        surface: Colors.grey.shade200,
+        onSurface: Colors.black,
+      ),
       useMaterial3: true,
     );
 
     final darkTheme = ThemeData(
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: const Color(0xFF0F1623),
+      scaffoldBackgroundColor: Colors.blueGrey.shade900,
+      colorScheme: ColorScheme.dark(
+        primary: Colors.blue,
+        onPrimary: Colors.white,
+        surface: Colors.blueGrey.shade800,
+        onSurface: Colors.white,
+      ),
       useMaterial3: true,
     );
 
