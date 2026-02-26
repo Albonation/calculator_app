@@ -1,16 +1,8 @@
-# calculator_app
+# Calculator App
 
-A new Flutter project.
+This calculator app is structured using a modular Flutter architecture.
+The goal is to separate user interface from app logic. I decided to keep main.dart simple and only start the app.
 
-## Getting Started
+Then app.dart creates our app, sets up logic for the theme, owns theme state, and returns Material App with the calculators main screen.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+After that, each file has a specific role within the application and communicates with other components through inputs and callbacks.
