@@ -51,7 +51,9 @@ class _CalcButtonState extends State<CalcButton> {
     //use AnimatedScale for a subtle shrinking effect when pressed
     return AnimatedScale(
       scale: _isPressed ? 0.95 : 1.0,
-      duration: const Duration(milliseconds: 100),
+      duration: _isPressed
+          ? const Duration(milliseconds: 100)
+          : Duration.zero,
       //to create the ripple effect on tap
       child: Material(
         color: Colors.transparent,

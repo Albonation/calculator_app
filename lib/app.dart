@@ -1,4 +1,5 @@
 //main app widget that manages theme state and provides it to the rest of the app
+//the theme toggle enhanced feature is born here
 
 import 'package:flutter/material.dart';
 import 'screens/calc_main_screen.dart';
